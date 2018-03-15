@@ -1,6 +1,9 @@
 package graphql
 
 import grails.rest.Resource
+import org.grails.gorm.graphql.entity.dsl.GraphQLMapping
+import org.grails.gorm.graphql.entity.dsl.GraphQLPropertyMapping
+
 
 @Resource(uri='/card')
 class Card {
@@ -14,7 +17,13 @@ class Card {
     String type
     String script 
 
-    static graphql = true
+    // static graphql = true
+    static graphql = GraphQLMapping.build {
+        property('name', description: 'Name of the card')
+        property('attack', description: 'Attack Points')
+        property('defense', description: 'Defense Points')
+        property('type', description: 'Type of card')
+    }
 
     static constraints = {
         code(blank: false, nullable: false)
