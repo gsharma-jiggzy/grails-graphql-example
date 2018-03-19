@@ -35,12 +35,17 @@ class Card {
                 }
             })
         }
-        query('cardByType', [Card]) {
+        query('cardListByType', [Card]) {
+            defaultListArguments()
             argument('type', String)
             dataFetcher(new EntityDataFetcher(Card.gormPersistentEntity) {
                 @Override
                 Object get(DataFetchingEnvironment environment) {
-                    Card.findAllByType(environment.getArgument('type'))
+                    Card.findAllByType(environment.getArgument('type'), [
+                        max: environment.getArgument('max'), 
+                        sort: environment.getArgument('sort'), 
+                        order: environment.getArgument('order'), 
+                        offset: environment.getArgument('offset')])
                 }
             })
         }
