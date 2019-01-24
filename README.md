@@ -10,3 +10,4 @@ Create a scheme called **graphql** and import the card table from cards.sql
 Make sure you have a root user with a password of aces (can be changed in application.yml if you have a different user)
 
 use a grails run and go to http://localhost:8080/graphql/browser to reach the GraphiQL interface
+# EOF
